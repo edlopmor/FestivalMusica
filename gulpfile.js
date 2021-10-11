@@ -17,9 +17,18 @@ function compilarCSS (done){
 
 done();
 }
+//Funcion para compilar javascript 
+
+function javascript (done){
+    src('src/js/**/*.js')
+    .pipe(dest('build.js')),
+
+    done();
+}
 //Funcion para manter activo un wacht y que cada vez que se hagan cambio en un archivo.scss se modifique la hoja de estilos principal. 
 function watchApp (done){
     watch('src/scss/**/*.scss',compilarCSS);
+    watch('src/js/**/*.js',javascript);
 
     done();
 }
@@ -61,10 +70,19 @@ function generarImagenAvif (done){
     .pipe(dest('build/img'))  
     done();
 }
+//Funcion para compilar javascript 
+
+function javascript (done){
+    src('src/js/**/*.js')
+    .pipe(dest('build/js')),
+
+    done();
+}
 
 exports.compilarCSS = compilarCSS;
 exports.generarImagenWebpp= generarImagenWebpp;
 exports.generarImagenMin = generarImagenMin;
 exports.generarImagenAvif =generarImagenAvif;
+exports.javascript = javascript;
 
-exports.watchApp = parallel(generarImagenWebpp,generarImagenMin,generarImagenAvif,watchApp);
+exports.watchApp = parallel(generarImagenWebpp,generarImagenMin,generarImagenAvif,javascript,watchApp);
