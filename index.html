@@ -11,6 +11,49 @@
     <link rel="stylesheet" href="build/css/app.css">
 </head>
 <body>
+<header class="header">
+    <div class="contenedor contenido-header">
+        <h1>Rock and EDM Festival</h1>
+        <nav class="navegacion-principal">
+            <a href="#">Line up</a>
+            <a href="#">Galeria</a>
+            <a href="#">Boletos</a>
+        </nav>
+    </div>    
+</header>
+<div class="video">
+    <div class="overlay">
+        <div class="contenedor contenido-video">
+            <h2>Rock & EDM Festival</h2>
+            <p>Julio 2022,Guadalajara, Mexico.</p>                            
+        </div>
+    </div>    
+                <!--Muted para edge, si no no se reproduce, 
+                loop repetir el video cuando acabe. 
+                Controls añadir controles dentro de la web para poder controlar el video.
+                Algunos navegadores no soportan el formato mp4, hay que poner otros formatos para diferentes navegadores,
+                este orden es que llevara a que nuestro video se reproduzca en cualquier navegador, dispositivo. mp4--ogg--webm-->    
+    <video autoplay muted loop >
+        <source src="video/concierto.mp4" type="video/mp4">
+        <source src="video/concierto.ogg" type="video/ogg">
+        <source src="video/concierto.webm" type="video/webm">
+    </video>
+</div>
+<section class="contenedor sobre-festival">
+    <div class="imagen">
+        <img src="/build/img/imagen_vocalista.webp" alt="Imagen vocalista festiva">
+    </div>
+    <div class="contenido-festival">
+        <h2>Rock & EDM Festival</h2>
+        <p class="fecha">Julio 2022,Guadalajara Mexico</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris euismod, eros ut egestas ornare, risus est elementum nisl, 
+            a auctor tellus eros non ligula. Vivamus consectetur euismod hendrerit. Nulla condimentum mi at ligula facilisis, 
+            nec commodo metus aliquam. Nam vel mauris vulputate, dictum enim vel, commodo ante. Suspendisse iaculis convallis interdum. 
+            </p>
+    </div>
+
+</section>
+
 
 </body>
 </html>
