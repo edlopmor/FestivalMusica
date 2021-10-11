@@ -36,7 +36,35 @@ function generarImagenWebpp (done){
 
     done();
 }
+//Image min 
+const imagemin = require('gulp-imagemin');
+const cache = require('gulp-cache');
+
+function generarImagenMin (done){
+    const opciones = {
+        optimizationLevel:3
+    }
+    src('src/img/**/*.{png,jpg}')
+    .pipe(cache(imagemin(opciones)))
+    .pipe(dest('build/img'))  
+    done();
+}
+//Funcion para generar imagenes AVIF
+const avif = require('gulp-avif');
+
+function generarImagenAvif (done){
+    const opciones = {
+        quality:50
+    };
+    src('src/img/**/*.{png,jpg}')
+    .pipe(avif(opciones))
+    .pipe(dest('build/img'))  
+    done();
+}
 
 exports.compilarCSS = compilarCSS;
-exports.watchApp = parallel(watchApp,generarImagenWebpp);
 exports.generarImagenWebpp= generarImagenWebpp;
+exports.generarImagenMin = generarImagenMin;
+exports.generarImagenAvif =generarImagenAvif;
+
+exports.watchApp = parallel(generarImagenWebpp,generarImagenMin,generarImagenAvif,watchApp);
