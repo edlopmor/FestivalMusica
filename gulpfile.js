@@ -2,25 +2,40 @@ const {src,dest,watch,parallel} = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const plumber = require('gulp-plumber');
 
+const autoprefixer = require('autoprefixer');
+const csnano = require('cssnano');
+const postcss = require('gulp-postcss');
+
+const sourcemaps = require('gulp-sourcemaps')
+
 
 //Funcion que compilar el CSS 
 function compilarCSS (done){
     //Identificar el archivo sass a compilar
     src('src/scss/**/*.scss')
+    .pipe(sourcemaps.init())
     //En caso de haber errores no detiene el workflow
     .pipe(plumber())
     //Compilar
     .pipe( sass() )
+    //Mejoras de css
+    .pipe(postcss([autoprefixer(),csnano()]))
+    .pipe(sourcemaps.write('.'))
     //Almacenarla en el disco duro
     .pipe(dest('build/css'));
     console.log('Compilando SASS');
 
 done();
 }
-//Funcion para compilar javascript 
+//
 
+//Funcion para compilar javascript 
+const terser = require('gulp-terser-js');
 function javascript (done){
     src('src/js/**/*.js')
+    .pipe(sourcemaps.init())
+    .pipe(terser())
+    .pipe(sourcemaps.write('.'))
     .pipe(dest('build.js')),
 
     done();
@@ -60,6 +75,7 @@ function generarImagenMin (done){
 }
 //Funcion para generar imagenes AVIF
 const avif = require('gulp-avif');
+const cssnano = require('cssnano');
 
 function generarImagenAvif (done){
     const opciones = {
