@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function iniciarApp (){
     crearGaleria();
+    scrollSmooth();
+    barraNavegacionFija ();
 }
 //Funcion que crea una galeria recorriendo el directorio indicado, crea las galerias en distintas versiones adaptadas a los distintos navegadores.
 function crearGaleria(){
@@ -58,4 +60,43 @@ function mostrarImagen(idImagen){
             
             body.appendChild(overlay);
             body.classList.add('fijar-body');
+}
+
+function scrollSmooth (){
+    //Buscamos los enlaces y lo almacenamos en una variable
+    const enlaces = document.querySelectorAll('.navegacion-principal a');
+    //Recorremos esa variable media un for eatch. y le añadimos el eventListener a todos ellos. 
+    enlaces.forEach(enlace => {
+        enlace.addEventListener('click', function(element){
+            //Anulamos el comportamiento por defecto 
+            element.preventDefault();
+            //Creamos una variable para almacenar el href del elemento seleccionado. 
+            const seccionScroll = element.target.attributes.href.value;
+            
+            const seccion = document.querySelector(seccionScroll);
+
+            seccion.scrollIntoView({ behavior :"smooth" });
+        });
+    });
+}
+
+function barraNavegacionFija (){
+    //Variable para identificar la barra de navegacion
+    const barraNavegacion = document.querySelector('.header');
+    //Variable para identicar donde desaparece la barra de navegacion superior.
+    const sobreFestival = document.querySelector('.sobre-festival');
+
+    const body = document.querySelector('body');
+
+    window.addEventListener('scroll', function(){
+        
+
+        if(sobreFestival.getBoundingClientRect().bottom<0){
+            barraNavegacion.classList.add('fijo');
+            body.classList.add('body-scroll');
+        }else{
+            barraNavegacion.classList.remove('fijo');
+            body.classList.remove('body-scroll');
+        }
+    })
 }

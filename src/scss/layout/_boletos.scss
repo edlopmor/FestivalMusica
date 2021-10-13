@@ -1,0 +1,63 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+
+.boletos{
+    padding: 5rem 0;
+    background-color: v.$verde;
+    h3{        
+        text-align: center ;        
+        color: v.$blanco;
+        margin-bottom: 2rem
+    }
+    .contenedor-boletos {
+        @include m.tablet {
+            @include m.grid (2, 5rem);
+        }
+    }
+}
+.nombrePase{
+    text-align: center;
+    font-size: 2.5rem;
+    color:v.$blanco;
+}
+.pase { 
+    gap:2rem;
+    // & toma la clase padre y le agrega la siguiente palabra
+    &-header,
+    &-footer{
+        p{
+            text-align: center;
+            color:v.$blanco;
+        }
+    }
+    
+
+    &-header{
+        p{            
+            text-transform: uppercase;  
+            background-color: v.$rosa;
+            font-size: 1.6rem;
+        }
+    }
+    &-body{
+            background-color: v.$blanco;
+            border-bottom: black;
+            ul{
+                @include m.resetearLista;
+            }
+            li
+            {
+                background-color: v.$blanco;
+                padding: 1rem;
+                border-bottom: 1px solid #b6b6b6;
+            }
+    }
+    &-footer{
+        background-color: v.$morado;
+         p{
+             font-size: 2.4rem;
+             font-weight: bold;
+         }
+    }
+}

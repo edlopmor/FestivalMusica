@@ -353,6 +353,9 @@ body {
 body.fijar-body {
   overflow: hidden;
 }
+body.body-scroll {
+  padding-top: 86px;
+}
 
 p {
   font-size: 2rem;
@@ -393,6 +396,15 @@ img {
 
 .header {
   background-color: #4cb8b3;
+}
+@media (min-width: 768px) {
+  .header.fijo {
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    box-shadow: 0.3rem 0.3rem 0.3rem 0.3re #333;
+  }
 }
 .header h1 {
   color: #ffff;
@@ -647,4 +659,71 @@ img {
 .btn-cerrar:hover {
   cursor: pointer;
   font-weight: 900;
+}
+
+.boletos {
+  padding: 5rem 0;
+  background-color: #4cb8b3;
+}
+.boletos h3 {
+  text-align: center;
+  color: #ffff;
+  margin-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  .boletos .contenedor-boletos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+  }
+}
+
+.nombrePase {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ffff;
+}
+
+.pase {
+  gap: 2rem;
+}
+.pase-header p, .pase-footer p {
+  text-align: center;
+  color: #ffff;
+}
+.pase-header p {
+  text-transform: uppercase;
+  background-color: #f53756;
+  font-size: 1.6rem;
+}
+.pase-body {
+  background-color: #ffff;
+  border-bottom: black;
+}
+.pase-body ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pase-body li {
+  background-color: #ffff;
+  padding: 1rem;
+  border-bottom: 1px solid #b6b6b6;
+}
+.pase-footer {
+  background-color: #752f97;
+}
+.pase-footer p {
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+
+.siteFooter {
+  background-color: #f53756;
+  padding: 1rem;
+}
+.siteFooter p {
+  margin: 0 auto;
+  text-align: center;
+  color: #ffff;
 }
